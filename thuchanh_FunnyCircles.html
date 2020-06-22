@@ -11,6 +11,23 @@
             this.x = x;
             this.y = y;
             this.radius = radius;
+            this.speedX = 10;
+            this.speedY = 10;
+        }
+        Circle.prototype.move = function () {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            this.left = this.x - this.radius;
+            this.right = this.x + this.radius;
+            this.top = this.y - this.radius;
+            this.bottom = this.y + this.radius;
+        }
+        Circle.prototype.checkCollision = function () {
+            if (this.left <=0 || this.right >= window.innerWidth) {
+                this.speedX = -this.speedX;
+            }if (this.top <=0 || this.bottom >= window.innerHeight) {
+                this.speedY = -this.speedY;
+            }
         }
         function getRandomHex() {
             return Math.floor(Math.random()*255);
@@ -32,14 +49,25 @@
             ctx.arc(circle.x, circle.y, circle.radius, 0, 2*Math.PI);
             ctx.fillStyle = color;
             ctx.fill();
+            setInterval(function () {
+                ctx.beginPath();
+                ctx.arc(circle.x, circle.y, circle.radius*1.1, 0, 2*Math.PI);
+                ctx.fillStyle = "rgb(255,255,255)";
+                ctx.fill();
+                circle.move();
+                circle.checkCollision();
+                ctx.beginPath();
+                ctx.arc(circle.x, circle.y, circle.radius, 0, 2*Math.PI);
+                ctx.fillStyle = color;
+                ctx.fill();
+            }, 20);
         }
         function createMultiCircle(){
-            for (let i=0; i < 30; i++) {
+            for (let i=0; i < 5; i++) {
                 createCircle();
             }
         }
         createMultiCircle();
     </script>
-
 </body>
 </html>

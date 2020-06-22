@@ -34,6 +34,7 @@
                 this.year = year;
             }
             this.toString = function () {
+                // return this.getDay() + '/' + this.getMonth() + '/' + this.getYear();
                 let my_day, my_month, my_year;
                 let my_date = '';
                 if (this.day > 9) {
@@ -55,6 +56,7 @@
         let month = date.getMonth();
         let year = date.getYear();
         alert(day + '/' + month + '/' + year);
+
         date.setDay(10);
         date.setMonth(10);
         date.setYear(2019);
@@ -62,14 +64,14 @@
         month = date.getMonth();
         year = date.getYear();
         alert(day + '/' + month + '/' + year);
+
         date.setDate(2, 6, 2020);
         day = date.getDay();
         month = date.getMonth();
         year = date.getYear();
         alert(day + '/' + month + '/' + year);
+
         alert(date.toString());
-        let arr = new Array(10)
-        console.log(arr);
     </script>
 </body>
 </html>
