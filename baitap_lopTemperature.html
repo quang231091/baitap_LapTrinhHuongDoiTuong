@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lớp Temperature</title>
+</head>
+<body>
+    <script>
+        let Temperature = function (celcius) {
+            this.celcius = celcius;
+            this.getCelcius = function () {
+                return this.celcius;
+            }
+            this.setCelcius = function (value) {
+                this.celcius = value;
+            }
+            this.convertFahrenheit = function () {
+                return (this.getCelcius()*1.8 + 32);
+            }
+            this.convertKelvin = function () {
+                return (this.celcius + 273);
+            }
+        }
+        let my_temperate = new Temperature(100);
+        my_temperate.setCelcius(25);
+        document.write('Độ C: '+ my_temperate.getCelcius());
+        document.write('<br> Đổi sang độ F: '+ my_temperate.convertFahrenheit());
+        document.write('<br> Đổi sang đô K: '+ my_temperate.convertKelvin());
+    </script>
+</body>
+</html>
