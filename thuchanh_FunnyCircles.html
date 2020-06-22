@@ -50,6 +50,7 @@
             ctx.fillStyle = color;
             ctx.fill();
             setInterval(function () {
+                //ctx.clearRect(circle.x - circle.radius, circle.y - circle.radius, 2.1 * circle.radius, 2.1 * circle.radius)
                 ctx.beginPath();
                 ctx.arc(circle.x, circle.y, circle.radius*1.1, 0, 2*Math.PI);
                 ctx.fillStyle = "rgb(255,255,255)";
@@ -60,7 +61,7 @@
                 ctx.arc(circle.x, circle.y, circle.radius, 0, 2*Math.PI);
                 ctx.fillStyle = color;
                 ctx.fill();
-            }, 20);
+            }, 30);
         }
         function createMultiCircle(){
             for (let i=0; i < 5; i++) {

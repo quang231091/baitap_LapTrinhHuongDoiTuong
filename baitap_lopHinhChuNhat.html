@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lớp mô tả Hình Chữ Nhật</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="500px" height="300px" style="border: 1px solid #c3c3c3"></canvas>
+    <div id="result"></div>
+    <input type="button" value="Thay đổi kích thước" onclick="changeSize();">
+    <script>
+        function Rectangle(width, height) {
+            this.width = width;
+            this.height = height;
+            this.getWidth = function () {
+                return this.width;
+            }
+            this.getHeight = function () {
+                return this.height;
+            }
+            this.getPerimeter = function () {
+                return 2 * (this.width + this.height);
+            }
+            this.getArea = function () {
+                return this.width * this.height;
+            }
+            this.setWidth = function (width) {
+                this.width = width;
+            }
+            this.setHeight = function (height) {
+                this.height = height;
+            }
+            this.drawCanvas = function () {
+                let ctx = document.getElementById('myCanvas').getContext('2d');
+                ctx.beginPath();
+                ctx.fillStyle = '#FF0000';
+                ctx.fillRect(0,0,this.getWidth(), this.getHeight());
+            }
+        }
+        function changeSize() {
+            let ctx = document.getElementById('myCanvas').getContext('2d');
+            let new_width = +prompt('Nhập chiều dài mới: ');
+            let new_height = +prompt('Nhập chiều rộng mới ');
+            my_rectangle.setWidth(new_width);
+            my_rectangle.setHeight(new_height);
+            my_perimeter = my_rectangle.getPerimeter();
+            my_area = my_rectangle.getArea();
+            document.getElementById('result').innerHTML = 'Chu vi: ' + my_perimeter + ', Diện tích: ' + my_area;
+            ctx.clearRect(0,0,document.getElementById('myCanvas').width, document.getElementById('myCanvas'). height);
+            my_rectangle.drawCanvas();
+        }
+        let my_rectangle = new Rectangle(200, 135);
+        let my_perimeter = my_rectangle.getPerimeter();
+        let my_area = my_rectangle.getArea();
+        document.getElementById('result').innerHTML = 'Chu vi: ' + my_perimeter + ', Diện tích: ' + my_area;
+        my_rectangle.drawCanvas();
+    </script>
+</body>
+</html>
